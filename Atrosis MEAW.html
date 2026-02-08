@@ -1,0 +1,532 @@
+<Artrosis MEAW html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodilla Sana: Guía de Recuperación Activa</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FAFAFA; /* Light Grey Background */
+            color: #37474F; /* Blue Grey Text */
+        }
+        
+        /* Chart Container Styling - Responsive & Constrained */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Prevent excessive width */
+            height: 300px; /* Mobile base height */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px; /* Tablet/Desktop height */
+                max-height: 400px;
+            }
+        }
+
+        /* Custom Scrollbar for a clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00BFA5;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00897B;
+        }
+
+        /* Palette Definitions for usage in HTML/JS */
+        /* Palette: "Vitality & Healing"
+           Primary: #01579B (Deep Blue)
+           Accent 1: #00BFA5 (Teal/Green)
+           Accent 2: #FF5722 (Deep Orange/Coral)
+           Neutral: #ECEFF1 (Blue Grey Light)
+        */
+        .bg-primary { background-color: #01579B; }
+        .text-primary { color: #01579B; }
+        .bg-accent-1 { background-color: #00BFA5; }
+        .text-accent-1 { color: #00BFA5; }
+        .bg-accent-2 { background-color: #FF5722; }
+        .text-accent-2 { color: #FF5722; }
+        .border-primary { border-color: #01579B; }
+
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    <!-- 
+    Analysis Summary:
+    Source: Comprehensive Guide to Joint Health for 77yo female with early osteoarthritis.
+    Core Themes: Aging (Sarcopenia/Cartilage), Mechanical Load (Slopes), Anti-inflammatory Nutrition, Safe Movement.
+    Narrative Plan:
+    1. Context: "Understanding the Pain" - Visualizing forces on the knee (Bar Chart).
+    2. The Body: "The Aging Factor" - Visualizing muscle loss (Line Chart) and cartilage composition (Donut Chart).
+    3. The Solution (Food): "Internal Pharmacy" - Nutritional checklist (HTML List).
+    4. The Solution (Action): "Maintenance Program" - Exercise guide and Pain Gauge (Gauge Chart).
+    -->
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-primary text-white py-12 shadow-lg relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <!-- Decorative CSS pattern instead of SVG -->
+            <div class="w-full h-full" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 30px 30px;"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Salud Articular Integral</h1>
+            <p class="text-xl md:text-2xl text-blue-100 font-light max-w-2xl mx-auto">
+                Guía de recuperación y cuidados para una vida activa a los 77 años.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 space-y-16">
+
+        <!-- Section 1: Understanding the Pain -->
+        <section>
+            <div class="flex flex-col md:flex-row items-center gap-4 mb-6">
+                <div class="w-2 h-12 bg-accent-2 rounded-full"></div>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800">1. ¿Por qué te duele la rodilla?</h2>
+                    <p class="text-gray-600 mt-1">Entendiendo la mecánica detrás del "Síndrome de Dolor Patelofemoral".</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Text Context -->
+                <div class="card p-6 flex flex-col justify-center">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        Tu rodilla funciona como una polea. La rótula se desliza sobre el fémur. En terreno plano, la presión es manejable. Sin embargo, al caminar en <strong>pendientes o bajar escaleras</strong>, la física actúa en tu contra.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed border-l-4 border-primary pl-4">
+                        La fuerza que comprime tu rótula contra el fémur se multiplica drásticamente. Esto, sumado al inicio de artrosis (desgaste del "teflón" natural), causa la inflamación aguda que sientes hoy.
+                    </p>
+                </div>
+
+                <!-- Visualization: Joint Loads -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-primary mb-4 text-center">Carga sobre la Rodilla (Veces tu Peso Corporal)</h3>
+                    <div class="chart-container">
+                        <canvas id="kneeLoadChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2 text-center italic">
+                        Nota el drástico aumento de presión en pendientes y escaleras comparado con caminar en plano.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Aging & Biology -->
+        <section>
+            <div class="flex flex-col md:flex-row items-center gap-4 mb-6">
+                <div class="w-2 h-12 bg-accent-1 rounded-full"></div>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800">2. El Reto del Tiempo: Músculo y Cartílago</h2>
+                    <p class="text-gray-600 mt-1">Dos procesos naturales que debemos gestionar: Sarcopenia y Deshidratación.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Visualization: Sarcopenia -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-primary mb-4 text-center">La Importancia de la Proteína: Masa Muscular vs. Edad</h3>
+                    <div class="chart-container">
+                        <canvas id="muscleMassChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2 text-center">
+                        A partir de los 50, perder músculo es natural ("Sarcopenia"). Menos músculo = menos protección para tu rodilla.
+                    </p>
+                </div>
+
+                <!-- Visualization: Cartilage Composition -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-primary mb-4 text-center">¿De qué está hecho tu Cartílago?</h3>
+                    <div class="chart-container">
+                        <canvas id="cartilageChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2 text-center">
+                        El cartílago es mayormente <strong>AGUA</strong>. Si no te hidratas (1.5 - 2L diarios), el amortiguador se seca y se agrieta.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Nutrition Strategy -->
+        <section class="bg-blue-50 rounded-3xl p-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-primary">3. Tu Farmacia en la Cocina</h2>
+                <p class="text-xl text-gray-600 mt-2">Dieta Antiinflamatoria y Reparadora</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- The Good -->
+                <div class="card p-6 border-t-4 border-green-500">
+                    <h3 class="text-2xl font-bold text-green-700 mb-4 text-center">✅ SÍ: Reparadores</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🐟</span>
+                            <div>
+                                <strong class="block text-gray-800">Omega-3</strong>
+                                <span class="text-sm text-gray-600">Pescados grasos (Atún, Salmón). El antiinflamatorio natural más potente.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🥚</span>
+                            <div>
+                                <strong class="block text-gray-800">Proteína de Calidad</strong>
+                                <span class="text-sm text-gray-600">Huevo, Pollo, Legumbres. 1.2g por kilo de peso para frenar la sarcopenia.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🍲</span>
+                            <div>
+                                <strong class="block text-gray-800">Caldo de Huesos</strong>
+                                <span class="text-sm text-gray-600">Fuente directa de colágeno natural.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- The Bad -->
+                <div class="card p-6 border-t-4 border-red-500">
+                    <h3 class="text-2xl font-bold text-red-700 mb-4 text-center">❌ NO: Inflamatorios</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🍩</span>
+                            <div>
+                                <strong class="block text-gray-800">Azúcar y Harinas Blancas</strong>
+                                <span class="text-sm text-gray-600">Endurecen (glican) tus tejidos y aumentan el dolor.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🌻</span>
+                            <div>
+                                <strong class="block text-gray-800">Aceites Procesados</strong>
+                                <span class="text-sm text-gray-600">Girasol o Maíz en exceso promueven la inflamación.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🌭</span>
+                            <div>
+                                <strong class="block text-gray-800">Embutidos</strong>
+                                <span class="text-sm text-gray-600">Llenos de conservantes y sal que retienen líquidos.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Daily Goals -->
+                <div class="card p-6 border-t-4 border-blue-500">
+                    <h3 class="text-2xl font-bold text-primary mb-4 text-center">🎯 Metas Diarias</h3>
+                    <div class="space-y-4">
+                        <div class="bg-blue-100 rounded-lg p-3">
+                            <div class="flex justify-between font-bold text-blue-800 mb-1">
+                                <span>Agua</span>
+                                <span>1.5 - 2 Litros</span>
+                            </div>
+                            <div class="w-full bg-blue-200 rounded-full h-2.5">
+                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-yellow-100 rounded-lg p-3">
+                            <div class="flex justify-between font-bold text-yellow-800 mb-1">
+                                <span>Proteína</span>
+                                <span>3 Palmas de mano</span>
+                            </div>
+                            <div class="w-full bg-yellow-200 rounded-full h-2.5">
+                                <div class="bg-yellow-600 h-2.5 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-orange-100 rounded-lg p-3">
+                            <div class="flex justify-between font-bold text-orange-800 mb-1">
+                                <span>Vitamina D (Sol)</span>
+                                <span>15 Minutos</span>
+                            </div>
+                            <div class="w-full bg-orange-200 rounded-full h-2.5">
+                                <div class="bg-orange-500 h-2.5 rounded-full" style="width: 40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Physical Maintenance -->
+        <section>
+            <div class="flex flex-col md:flex-row items-center gap-4 mb-6">
+                <div class="w-2 h-12 bg-accent-2 rounded-full"></div>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800">4. Kinesiología Casera</h2>
+                    <p class="text-gray-600 mt-1">Regla de Oro: Fortalecer sin dañar. Escucha a tu dolor.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Pain Management Gauge -->
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <h3 class="text-xl font-semibold text-primary mb-2 text-center">¿Cuándo debo parar?</h3>
+                    <p class="text-sm text-gray-500 mb-4 text-center">Usa este "Semáforo del Dolor" durante tus ejercicios.</p>
+                    <div class="chart-container" style="height: 250px;">
+                        <canvas id="painGaugeChart"></canvas>
+                    </div>
+                    <div class="text-center mt-[-20px]">
+                        <p class="font-bold text-lg text-gray-800" id="gaugeText">Zona Segura</p>
+                    </div>
+                </div>
+
+                <!-- Exercise Routine -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-primary mb-4">Rutina Diaria (En Cama o Silla)</h3>
+                    <div class="relative border-l-4 border-blue-200 ml-4 pl-8 space-y-8">
+                        <!-- Exercise 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-11 top-0 bg-accent-1 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                            <h4 class="font-bold text-lg text-gray-800">Isométrico de Cuádriceps</h4>
+                            <p class="text-gray-600 text-sm mb-2">"El Despertador"</p>
+                            <p class="text-gray-700">Sentada, toalla bajo la rodilla. Empuja la toalla contra la cama. Aguanta 5 seg.</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mt-2">10 Repeticiones</span>
+                        </div>
+                        <!-- Exercise 2 -->
+                        <div class="relative">
+                            <div class="absolute -left-11 top-0 bg-accent-1 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                            <h4 class="font-bold text-lg text-gray-800">Extensión Sentada</h4>
+                            <p class="text-gray-600 text-sm mb-2">"Movilidad"</p>
+                            <p class="text-gray-700">En silla, levanta el pie hasta estirar la rodilla. Sostén 3 seg. Baja lento.</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mt-2">10 Repeticiones</span>
+                        </div>
+                        <!-- Exercise 3 -->
+                        <div class="relative">
+                            <div class="absolute -left-11 top-0 bg-accent-1 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                            <h4 class="font-bold text-lg text-gray-800">Elevación Recta</h4>
+                            <p class="text-gray-600 text-sm mb-2">"El Fortalecedor"</p>
+                            <p class="text-gray-700">Acostada, pierna estirada. Levanta 20cm de la cama. Aguanta 3 seg.</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mt-2">8-10 Repeticiones</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <footer class="bg-gray-800 text-white rounded-xl p-8 text-center shadow-lg">
+            <h3 class="text-2xl font-bold mb-2">Mensaje Final</h3>
+            <p class="text-lg max-w-3xl mx-auto text-gray-300">
+                "Tienes una base excelente. Este dolor es transitorio. Si nutres tu cuerpo con proteínas y agua, y realizas estos ejercicios sencillos, fortalecerás el 'escudo' muscular de tu rodilla."
+            </p>
+            <div class="mt-6">
+                <span class="bg-accent-1 text-white px-6 py-2 rounded-full font-bold">¡Ánimo!</span>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- 1. CONFIGURATION ---
+        Chart.defaults.font.family = "'Roboto', sans-serif";
+        Chart.defaults.font.size = 14;
+        Chart.defaults.color = '#546E7A';
+
+        // --- 2. UTILS: Label Wrapping ---
+        function wrapLabel(label, maxChars) {
+            if (label.length <= maxChars) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- 3. CHART GENERATION ---
+
+        // Chart 1: Knee Load (Bar Chart)
+        const ctxLoad = document.getElementById('kneeLoadChart').getContext('2d');
+        const kneeLoadLabels = ['Caminar Plano', 'Subir Escaleras', 'Caminar Pendiente', 'Sentadilla Profunda'];
+        const processedLoadLabels = kneeLoadLabels.map(l => wrapLabel(l, 16));
+
+        new Chart(ctxLoad, {
+            type: 'bar',
+            data: {
+                labels: processedLoadLabels,
+                datasets: [{
+                    label: 'Fuerza x Peso Corporal',
+                    data: [0.5, 3.3, 4.0, 7.0],
+                    backgroundColor: [
+                        '#00BFA5', // Green/Teal for safe
+                        '#FFB74D', // Warning Orange
+                        '#FF5722', // Danger Red-Orange
+                        '#D32F2F'  // Extreme
+                    ],
+                    borderRadius: 8,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                const label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            },
+                            label: function(context) {
+                                return context.raw + ' veces tu peso corporal';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Fuerza (x Peso Corporal)' }
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Muscle Mass (Line Chart)
+        const ctxMuscle = document.getElementById('muscleMassChart').getContext('2d');
+        new Chart(ctxMuscle, {
+            type: 'line',
+            data: {
+                labels: ['30 años', '40 años', '50 años', '60 años', '70 años', '80 años'],
+                datasets: [{
+                    label: 'Masa Muscular Promedio',
+                    data: [100, 95, 85, 75, 60, 50], // Illustrative curve of sarcopenia
+                    borderColor: '#01579B',
+                    backgroundColor: 'rgba(1, 87, 155, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#00BFA5',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                return tooltipItems[0].label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 40,
+                        title: { display: true, text: '% Masa Muscular' }
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Cartilage Composition (Donut Chart)
+        const ctxCartilage = document.getElementById('cartilageChart').getContext('2d');
+        const cartilageLabels = ['Agua (Hidratación)', 'Colágeno (Estructura)', 'Proteoglicanos'];
+        const processedCartilageLabels = cartilageLabels.map(l => wrapLabel(l, 16));
+
+        new Chart(ctxCartilage, {
+            type: 'doughnut',
+            data: {
+                labels: processedCartilageLabels,
+                datasets: [{
+                    data: [70, 20, 10],
+                    backgroundColor: [
+                        '#0288D1', // Water Blue
+                        '#FFB74D', // Structure
+                        '#B0BEC5'  // Grey
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                const label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 4: Pain Gauge (Half Doughnut)
+        const ctxGauge = document.getElementById('painGaugeChart').getContext('2d');
+        new Chart(ctxGauge, {
+            type: 'doughnut',
+            data: {
+                labels: ['Molestia Muscular (Bien)', 'Precaución', 'Dolor Punzante (STOP)'],
+                datasets: [{
+                    data: [40, 30, 30],
+                    backgroundColor: [
+                        '#00BFA5', // Green
+                        '#FFB74D', // Yellow/Orange
+                        '#FF5722'  // Red
+                    ],
+                    borderWidth: 0,
+                    circumference: 180,
+                    rotation: 270,
+                    cutout: '70%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        enabled: false // Custom text used instead
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
